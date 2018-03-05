@@ -16,7 +16,9 @@ import org.json.JSONObject;
 
 public class Utility {
 
-
+    /**
+     * 解析和处理服务器返回的省级数据
+     */
     public static boolean handleProvinceResponse(String response) {
         if (!TextUtils.isEmpty(response)) {
             try {
@@ -37,12 +39,15 @@ public class Utility {
 
     }
 
+    /**
+     * 解析和处理服务器返回的市级数据
+     */
     public static boolean handleCityResponse(String response, int provinceId) {
         if (!TextUtils.isEmpty(response)) {
             try {
-                JSONArray allCites = new JSONArray(response);
-                for (int i = 0; i < allCites.length(); i++) {
-                    JSONObject cityObject = allCites.getJSONObject(i);
+                JSONArray allCities = new JSONArray(response);
+                for (int i = 0; i < allCities.length(); i++) {
+                    JSONObject cityObject = allCities.getJSONObject(i);
                     City city = new City();
                     city.setCityName(cityObject.getString("name"));
                     city.setCityCode(cityObject.getInt("id"));
@@ -58,6 +63,9 @@ public class Utility {
 
     }
 
+    /**
+     * 解析和处理服务器返回的县级数据
+     */
     public static boolean handleCountyResponse(String response, int cityId) {
         if (!TextUtils.isEmpty(response)) {
             try {
@@ -78,7 +86,11 @@ public class Utility {
         return false;
 
     }
-    public static Weather handleWeatherResponse(String response ) {
+
+    /**
+     * 将返回的JSON数据解析成Weather实体类
+     */
+    public static Weather handleWeatherResponse(String response) {
         try {
             JSONObject jsonObject = new JSONObject(response);
             JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");

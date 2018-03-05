@@ -16,11 +16,15 @@ public class Suggestion {
         @SerializedName("txt")
         public String info;
     }
-    public class Sport {
+
+    public class CarWash {
+
         @SerializedName("txt")
         public String info;
     }
-    public class CarWash {
+
+    public class Sport {
+
         @SerializedName("txt")
         public String info;
     }
